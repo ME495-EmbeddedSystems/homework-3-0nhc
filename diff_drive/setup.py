@@ -21,6 +21,10 @@ setup(
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*')),
         (os.path.join(
             'share',
+            package_name, 'env-hooks'),
+            glob('env-hooks/*')),
+        (os.path.join(
+            'share',
             package_name,
             'models/asphalt_plane/materials/scripts'),
             glob('models/asphalt_plane/materials/scripts/*.material')),
