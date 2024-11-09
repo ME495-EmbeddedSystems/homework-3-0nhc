@@ -41,6 +41,11 @@ setup(
         (os.path.join(
             'share',
             package_name,
+            'models/spider_man/materials/scripts'),
+            glob('models/spider_man/materials/scripts/*.material')),
+        (os.path.join(
+            'share',
+            package_name,
             'models/asphalt_plane/materials/textures'),
             glob('models/asphalt_plane/materials/textures/*')),
         (os.path.join(
@@ -53,6 +58,11 @@ setup(
             package_name,
             'models/jersey_barrier/materials/textures'),
             glob('models/jersey_barrier/materials/textures/*')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/spider_man/materials/textures'),
+            glob('models/spider_man/materials/textures/*')),
         (os.path.join(
             'share',
             package_name,
@@ -71,6 +81,11 @@ setup(
         (os.path.join(
             'share',
             package_name,
+            'models/spider_man/thumbnails'),
+            glob('models/spider_man/thumbnails/*')),
+        (os.path.join(
+            'share',
+            package_name,
             'models/asphalt_plane/meshes'),
             glob('models/asphalt_plane/meshes/*')),
         (os.path.join(
@@ -83,6 +98,16 @@ setup(
             package_name,
             'models/jersey_barrier/meshes'),
             glob('models/jersey_barrier/meshes/*')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/spider_man/meshes'),
+            glob('models/spider_man/meshes/*')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/furina/meshes'),
+            glob('models/furina/meshes/*')),
         (os.path.join(
             'share',
             package_name,
@@ -101,6 +126,16 @@ setup(
         (os.path.join(
             'share',
             package_name,
+            'models/spider_man'),
+            glob('models/spider_man/*.config')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/furina'),
+            glob('models/furina/*.config')),
+        (os.path.join(
+            'share',
+            package_name,
             'models/asphalt_plane'),
             glob('models/asphalt_plane/*.sdf')),
         (os.path.join(
@@ -113,6 +148,36 @@ setup(
             package_name,
             'models/jersey_barrier'),
             glob('models/jersey_barrier/*.sdf')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/spider_man'),
+            glob('models/spider_man/*.sdf')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/furina'),
+            glob('models/furina/*.sdf')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/asphalt_plane'),
+            glob('models/asphalt_plane/*.pbtxt')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/cardboard_box'),
+            glob('models/cardboard_box/*.pbtxt')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/jersey_barrier'),
+            glob('models/jersey_barrier/*.pbtxt')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/spider_man'),
+            glob('models/spider_man/*.pbtxt')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,

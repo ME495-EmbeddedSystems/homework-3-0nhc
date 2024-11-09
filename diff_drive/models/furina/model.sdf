@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="Furina">
+    <static>true</static>
+    <link name="furina">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>meshes/untitled.dae</uri>
+            <scale>2.0 2.0 2.0</scale>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision_0">
+        <geometry>
+          <mesh>
+            <uri>meshes/untitled.dae</uri>
+            <scale>2.0 2.0 2.0</scale>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>
