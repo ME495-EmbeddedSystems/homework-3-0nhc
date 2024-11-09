@@ -23,17 +23,17 @@ setup(
             'share',
             package_name,
             'models/asphalt_plane/materials/scripts'),
-            glob('models/asphalt_plane/materials/scripts/*')),
+            glob('models/asphalt_plane/materials/scripts/*.material')),
         (os.path.join(
             'share',
             package_name,
             'models/cardboard_box/materials/scripts'),
-            glob('models/cardboard_box/materials/scripts/*')),
+            glob('models/cardboard_box/materials/scripts/*.material')),
         (os.path.join(
             'share',
             package_name,
             'models/jersey_barrier/materials/scripts'),
-            glob('models/jersey_barrier/materials/scripts/*')),
+            glob('models/jersey_barrier/materials/scripts/*.material')),
         (os.path.join(
             'share',
             package_name,
