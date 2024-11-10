@@ -1,0 +1,31 @@
+<robot name="base_link" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:property name="yaml_file" value="$(find diff_drive)/config/robot_size.yaml" />
+    <xacro:property name="props" value="${xacro.load_yaml(yaml_file)['/**']['ros__parameters']}" />
+    <xacro:property name="base_link_length"  value="${props['base_link_length']}" />
+    <xacro:property name="base_link_width"  value="${props['base_link_width']}" />
+    <xacro:property name="base_link_height"  value="${props['base_link_height']}" />
+    <xacro:property name="wheel_radius"  value="${props['wheel_radius']}" />
+    <xacro:property name="wheel_height"  value="${props['wheel_height']}" />
+    <xacro:property name="PI"  value="3.1415926535897932" />
+    
+    <xacro:macro name="caster" params="name">
+        <link name="${name}">
+            <visual>
+                <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+                <geometry>
+                    <sphere radius="${wheel_radius - base_link_height/2}"/>
+                </geometry>
+                <material name="caster_color">
+                    <color rgba="0.0 1.0 0.0 1.0"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+                <geometry>
+                    <sphere radius="${wheel_radius - base_link_height/2}"/>
+                </geometry>
+            </collision>
+        </link>
+    </xacro:macro>
+
+</robot>
