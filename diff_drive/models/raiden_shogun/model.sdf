@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="raiden_shogun">
+    <static>true</static>
+    <link name="raiden_shogun">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>meshes/untitled.dae</uri>
+            <scale>0.4 0.4 0.4</scale>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision_0">
+        <geometry>
+          <mesh>
+            <uri>meshes/untitled.dae</uri>
+            <scale>0.4 0.4 0.4</scale>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

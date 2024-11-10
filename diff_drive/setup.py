@@ -41,11 +41,6 @@ setup(
         (os.path.join(
             'share',
             package_name,
-            'models/spider_man/materials/scripts'),
-            glob('models/spider_man/materials/scripts/*.material')),
-        (os.path.join(
-            'share',
-            package_name,
             'models/asphalt_plane/materials/textures'),
             glob('models/asphalt_plane/materials/textures/*')),
         (os.path.join(
@@ -58,11 +53,6 @@ setup(
             package_name,
             'models/jersey_barrier/materials/textures'),
             glob('models/jersey_barrier/materials/textures/*')),
-        (os.path.join(
-            'share',
-            package_name,
-            'models/spider_man/materials/textures'),
-            glob('models/spider_man/materials/textures/*')),
         (os.path.join(
             'share',
             package_name,
@@ -81,11 +71,6 @@ setup(
         (os.path.join(
             'share',
             package_name,
-            'models/spider_man/thumbnails'),
-            glob('models/spider_man/thumbnails/*')),
-        (os.path.join(
-            'share',
-            package_name,
             'models/asphalt_plane/meshes'),
             glob('models/asphalt_plane/meshes/*')),
         (os.path.join(
@@ -101,13 +86,23 @@ setup(
         (os.path.join(
             'share',
             package_name,
-            'models/spider_man/meshes'),
-            glob('models/spider_man/meshes/*')),
+            'models/furina/meshes'),
+            glob('models/furina/meshes/*')),
         (os.path.join(
             'share',
             package_name,
-            'models/furina/meshes'),
-            glob('models/furina/meshes/*')),
+            'models/zhongli/meshes'),
+            glob('models/zhongli/meshes/*')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/raiden_shogun/meshes'),
+            glob('models/raiden_shogun/meshes/*')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/nahida/meshes'),
+            glob('models/nahida/meshes/*')),
         (os.path.join(
             'share',
             package_name,
@@ -126,13 +121,23 @@ setup(
         (os.path.join(
             'share',
             package_name,
-            'models/spider_man'),
-            glob('models/spider_man/*.config')),
+            'models/furina'),
+            glob('models/furina/*.config')),
         (os.path.join(
             'share',
             package_name,
-            'models/furina'),
-            glob('models/furina/*.config')),
+            'models/zhongli'),
+            glob('models/zhongli/*.config')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/raiden_shogun'),
+            glob('models/raiden_shogun/*.config')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/nahida'),
+            glob('models/nahida/*.config')),
         (os.path.join(
             'share',
             package_name,
@@ -151,13 +156,23 @@ setup(
         (os.path.join(
             'share',
             package_name,
-            'models/spider_man'),
-            glob('models/spider_man/*.sdf')),
+            'models/furina'),
+            glob('models/furina/*.sdf')),
         (os.path.join(
             'share',
             package_name,
-            'models/furina'),
-            glob('models/furina/*.sdf')),
+            'models/raiden_shogun'),
+            glob('models/raiden_shogun/*.sdf')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/zhongli'),
+            glob('models/zhongli/*.sdf')),
+        (os.path.join(
+            'share',
+            package_name,
+            'models/nahida'),
+            glob('models/nahida/*.sdf')),
         (os.path.join(
             'share',
             package_name,
@@ -173,11 +188,6 @@ setup(
             package_name,
             'models/jersey_barrier'),
             glob('models/jersey_barrier/*.pbtxt')),
-        (os.path.join(
-            'share',
-            package_name,
-            'models/spider_man'),
-            glob('models/spider_man/*.pbtxt')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,

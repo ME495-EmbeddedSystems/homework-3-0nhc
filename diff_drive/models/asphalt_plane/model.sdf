@@ -20,7 +20,6 @@
         <material>
           <script>
             <uri>model://asphalt_plane/materials/scripts</uri>
-            <uri>model://asphalt_plane/materials/textures</uri>
             <name>vrc/asphalt</name>
           </script>
         </material>
