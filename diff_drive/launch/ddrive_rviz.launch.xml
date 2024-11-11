@@ -1,0 +1,15 @@
+<launch>
+    <arg name="rviz_config" default="$(find-pkg-share diff_drive)/rviz/diff_drive.rviz" description="Customized Rviz configuration file."/>
+    <arg name="robot_description_path" default="$(find-pkg-share diff_drive)/urdf/robot.urdf.xacro" description="Path to the robot's xacro file."/>
+    <arg name="view_only" default="false" description="Set to true to only view the robot in Rviz."/>
+
+    <node pkg="robot_state_publisher" exec="robot_state_publisher" name="rsp" >
+        <param name="robot_description" value="$(command '$(exec-in-pkg xacro xacro) $(var robot_description_path)')" />
+    </node>
+
+    <node name="joint_state_publisher" pkg="joint_state_publisher" exec="joint_state_publisher"/>
+
+    <node if="$(var view_only)" name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" exec="joint_state_publisher_gui"/>
+
+    <node pkg="rviz2" exec="rviz2" args="-d $(var rviz_config)"/>
+</launch>
