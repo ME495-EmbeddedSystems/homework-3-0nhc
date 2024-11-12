@@ -6,6 +6,7 @@
     <xacro:property name="base_link_length"  value="${props['base_link_length']}" />
     <xacro:property name="base_link_width"  value="${props['base_link_width']}" />
     <xacro:property name="base_link_height"  value="${props['base_link_height']}" />
+    <xacro:property name="base_link_mass"  value="${props['base_link_mass']}" />
     <xacro:property name="wheel_radius"  value="${props['wheel_radius']}" />
     <xacro:property name="wheel_height"  value="${props['wheel_height']}" />
     <xacro:property name="PI"  value="3.1415926535897932" />
@@ -14,6 +15,13 @@
     <xacro:include filename="$(find diff_drive)/urdf/_caster.urdf.xacro" />
 
     <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${base_link_mass}"/>
+            <inertia ixx="${base_link_mass * (base_link_width**2 + base_link_height**2) / 12}" ixy="0" ixz="0"
+                     iyx="0" iyy="${base_link_mass * (base_link_length**2 + base_link_height**2) / 12}" iyz="0"
+                     izx="0" izy="0" izz="${base_link_mass * (base_link_length**2 + base_link_width**2) / 12}"/>
+        </inertial>
         <visual>
             <geometry>
                 <box size="${base_link_length} ${base_link_width} ${base_link_height}"/>
@@ -22,6 +30,11 @@
                 <color rgba="0.0 0.0 1.0 1.0"/>
             </material>
         </visual>
+        <collision>
+            <geometry>
+                <box size="${base_link_length} ${base_link_width} ${base_link_height}"/>
+            </geometry>
+        </collision>
     </link>
 
     <xacro:wheel name="left_wheel"/>
@@ -67,5 +80,27 @@
         <limit effort="10.0" velocity="10.0"/>
     </joint>
     
+    <gazebo>
+        <plugin name="gz::sim::systems::DiffDrive" filename="gz-sim-diff-drive-system">
+        <rosDebugLevel>na</rosDebugLevel>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100</updateRate>
+        <leftJoint>base_link_to_left_wheel</leftJoint>
+        <rightJoint>base_link_to_right_wheel</rightJoint>
+        <wheelSeparation>${base_link_width+wheel_height}</wheelSeparation>
+        <wheelDiameter>${wheel_radius*2}</wheelDiameter>
+        <wheelTorque>20</wheelTorque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_link</robotBaseFrame>
+        <publishWheelTF>false</publishWheelTF>
+        <publishOdomTF>true</publishOdomTF>
+        <publishWheelJointState>true</publishWheelJointState>
+        <wheelAcceleration>false</wheelAcceleration>
+        <odometrySource>world</odometrySource>
+        <publishTf>1</publishTf>
+        </plugin>
+    </gazebo>
 
 </robot>
