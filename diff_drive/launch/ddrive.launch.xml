@@ -2,7 +2,7 @@
     <!-- Declare the path to the world file -->
     <arg name="world" default="$(find-pkg-share diff_drive)/worlds/ddrive.world.sdf" description="Path to the world file"/>
     <arg name="rviz_config" default="diff_drive.rviz" description="Customized Rviz configuration file."/>
-    <arg name="robot_description_path" default="$(find-pkg-share diff_drive)/urdf/robot.urdf.xacro" description="Path to the robot's xacro file."/>
+    <arg name="robot_description_path" default="$(find-pkg-share diff_drive)/urdf/ddrive.gazebo.xacro" description="Path to the robot's xacro file."/>
 
     <!-- Include the Gazebo simulation launch file -->
     <!-- <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
