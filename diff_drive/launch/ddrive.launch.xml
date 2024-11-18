@@ -26,9 +26,8 @@
     <!-- Bridge for Gazebo to ROS2 topics -->
     <node pkg="ros_gz_bridge" exec="parameter_bridge" args="
         /cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist
-        /world/default/model/robot/joint_state@sensor_msgs/msg/JointState@gz.msgs.Model
+        /joint_states@sensor_msgs/msg/JointState@gz.msgs.Model
         ">
-        <remap from="/world/default/model/robot/joint_state" to="/joint_states"/>
     </node>
 
     <!-- Rviz -->
