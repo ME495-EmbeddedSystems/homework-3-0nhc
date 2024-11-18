@@ -7,7 +7,9 @@
   <maintainer email="hanzx@u.northwestern.edu">Zhengxiao Han</maintainer>
   <license>WTFPL</license>
 
+  <depend>joint_state_publisher</depend>
   <depend>joint_state_publisher_gui</depend>
+  <depend>ros_gz_bridge</depend>
   
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

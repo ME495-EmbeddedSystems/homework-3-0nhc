@@ -11,96 +11,22 @@
     <xacro:property name="wheel_height"  value="${props['wheel_height']}" />
     <xacro:property name="PI"  value="3.1415926535897932" />
 
-    <xacro:include filename="$(find diff_drive)/urdf/_wheel.urdf.xacro" />
-    <xacro:include filename="$(find diff_drive)/urdf/_caster.urdf.xacro" />
-
-    <link name="base_link">
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="${base_link_mass}"/>
-            <inertia ixx="${base_link_mass * (base_link_width**2 + base_link_height**2) / 12}" ixy="0" ixz="0"
-                     iyx="0" iyy="${base_link_mass * (base_link_length**2 + base_link_height**2) / 12}" iyz="0"
-                     izx="0" izy="0" izz="${base_link_mass * (base_link_length**2 + base_link_width**2) / 12}"/>
-        </inertial>
-        <visual>
-            <geometry>
-                <box size="${base_link_length} ${base_link_width} ${base_link_height}"/>
-            </geometry>
-            <material name="base_link_color">
-                <color rgba="0.0 0.0 1.0 1.0"/>
-            </material>
-        </visual>
-        <collision>
-            <geometry>
-                <box size="${base_link_length} ${base_link_width} ${base_link_height}"/>
-            </geometry>
-        </collision>
-    </link>
-
-    <xacro:wheel name="left_wheel"/>
-    <xacro:wheel name="right_wheel"/>
-    <xacro:caster name="up_caster"/>
-    <xacro:caster name="bottom_caster"/>
-
-    <joint name="base_link_to_left_wheel" type="continuous">
-        <parent link="base_link"/>
-        <child link="left_wheel"/>
-        <axis xyz="0 1 0"/>
-        <origin xyz="${base_link_length/2 - base_link_height/2}
-                     ${base_link_width/2 + wheel_height/2}
-                     0" rpy="0 0 0"/>
-        <limit effort="10.0" velocity="10.0"/>
-    </joint>
-
-    <joint name="base_link_to_right_wheel" type="continuous">
-        <parent link="base_link"/>
-        <child link="right_wheel"/>
-        <axis xyz="0 1 0"/>
-        <origin xyz="${base_link_length/2 - base_link_height/2}
-                     ${-base_link_width/2 - wheel_height/2}
-                     0" rpy="0 0 0"/>
-        <limit effort="10.0" velocity="10.0"/>
-    </joint>
-
-    <joint name="base_link_to_up_caster" type="fixed">
-        <parent link="base_link"/>
-        <child link="up_caster"/>
-        <origin xyz="-${base_link_length/2 - wheel_radius + base_link_height/2}
-                     0
-                     ${base_link_height/2}" rpy="0 0 0"/>
-        <limit effort="10.0" velocity="10.0"/>
-    </joint>
-
-    <joint name="base_link_to_bottom_caster" type="fixed">
-        <parent link="base_link"/>
-        <child link="bottom_caster"/>
-        <origin xyz="-${base_link_length/2 - wheel_radius + base_link_height/2}
-                     0
-                     ${-base_link_height/2}" rpy="0 0 0"/>
-        <limit effort="10.0" velocity="10.0"/>
-    </joint>
-    
     <gazebo>
         <plugin name="gz::sim::systems::DiffDrive" filename="gz-sim-diff-drive-system">
-        <rosDebugLevel>na</rosDebugLevel>
-        <alwaysOn>true</alwaysOn>
-        <updateRate>100</updateRate>
-        <leftJoint>base_link_to_left_wheel</leftJoint>
-        <rightJoint>base_link_to_right_wheel</rightJoint>
-        <wheelSeparation>${base_link_width+wheel_height}</wheelSeparation>
-        <wheelDiameter>${wheel_radius*2}</wheelDiameter>
-        <wheelTorque>20</wheelTorque>
-        <commandTopic>cmd_vel</commandTopic>
-        <odometryTopic>odom</odometryTopic>
-        <odometryFrame>odom</odometryFrame>
-        <robotBaseFrame>base_link</robotBaseFrame>
-        <publishWheelTF>false</publishWheelTF>
-        <publishOdomTF>true</publishOdomTF>
-        <publishWheelJointState>true</publishWheelJointState>
-        <wheelAcceleration>false</wheelAcceleration>
-        <odometrySource>world</odometrySource>
-        <publishTf>1</publishTf>
+            <left_joint>base_link_to_left_wheel</left_joint>
+            <right_joint>base_link_to_right_wheel</right_joint>
+            <wheel_separation>${base_link_width+wheel_height}</wheel_separation>
+            <wheel_radius>${wheel_radius}</wheel_radius>
+            <odom_publish_frequency>50.0</odom_publish_frequency>
+            <!-- <topic>/cmd_vel</topic> -->
+            <!-- <odom_topic>/odom</odom_topic> -->
+            <!-- <tf_topic>/tf</tf_topic> -->
+            <frame_id>odom</frame_id>
+            <child_frame_id>base_link</child_frame_id>
         </plugin>
-    </gazebo>
 
+        <plugin name="gz::sim::systems::JointStatePublisher" filename="libgz-sim-joint-state-publisher-system.so"
+        >
+    </plugin>
+    </gazebo>
 </robot>

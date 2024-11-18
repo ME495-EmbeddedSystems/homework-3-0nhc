@@ -1,7 +1,7 @@
 <launch>
     <arg name="world" default="$(find-pkg-share diff_drive)/worlds/ddrive.world.sdf" description="Path to the world file"/>
     <arg name="rviz_config" default="$(find-pkg-share diff_drive)/rviz/diff_drive.rviz" description="Customized Rviz configuration file."/>
-    <arg name="robot_description_path" default="$(find-pkg-share diff_drive)/urdf/ddrive.gazebo.xacro" description="Path to the robot's xacro file."/>
+    <arg name="robot_description_path" default="$(find-pkg-share diff_drive)/urdf/ddrive.robot.xacro" description="Path to the robot's xacro file."/>
 
     <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
         <arg name="gz_args" value="-r $(var world)"/>
@@ -11,6 +11,8 @@
         <param name="robot_description" value="$(command '$(exec-in-pkg xacro xacro) $(var robot_description_path)')" />
     </node>
 
+    <!-- <node pkg="joint_state_publisher" exec="joint_state_publisher" name="jsp"/> -->
+
     <node pkg="ros_gz_sim" exec="create" name="create_robot" output="screen">
         <param name="topic" value="/robot_description"/>
         <param name="R" value="0.0"/>
@@ -19,6 +21,15 @@
         <param name="x" value="0.0"/>
         <param name="y" value="0.0"/>
         <param name="z" value="0.3"/>
+    </node>
+
+    <!-- Bridge for Gazebo to ROS2 topics -->
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" args="
+        /model/robot/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist
+        /world/default/model/robot/joint_state@sensor_msgs/msg/JointState@gz.msgs.Model
+        ">
+        <remap from="/model/robot/cmd_vel" to="/cmd_vel" />
+        <remap from="/world/default/model/robot/joint_state" to="/joint_states"/>
     </node>
 
     <!-- Rviz -->
