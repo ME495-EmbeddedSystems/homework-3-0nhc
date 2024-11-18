@@ -11,8 +11,6 @@
         <param name="robot_description" value="$(command '$(exec-in-pkg xacro xacro) $(var robot_description_path)')" />
     </node>
 
-    <!-- <node pkg="joint_state_publisher" exec="joint_state_publisher" name="jsp"/> -->
-
     <node pkg="ros_gz_sim" exec="create" name="create_robot" output="screen">
         <param name="topic" value="/robot_description"/>
         <param name="R" value="0.0"/>
@@ -26,6 +24,8 @@
     <!-- Bridge for Gazebo to ROS2 topics -->
     <node pkg="ros_gz_bridge" exec="parameter_bridge" args="
         /cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist
+        /odom@nav_msgs/msg/Odometry[gz.msgs.Odometry
+        /tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V
         /joint_states@sensor_msgs/msg/JointState@gz.msgs.Model
         ">
     </node>
