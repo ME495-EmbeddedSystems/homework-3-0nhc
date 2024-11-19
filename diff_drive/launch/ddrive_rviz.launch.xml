@@ -1,6 +1,6 @@
 <launch>
     <arg name="rviz_config" default="$(find-pkg-share diff_drive)/rviz/diff_drive.rviz" description="Customized Rviz configuration file."/>
-    <arg name="robot_description_path" default="$(find-pkg-share diff_drive)/urdf/ddrive.gazebo.xacro" description="Path to the robot's xacro file."/>
+    <arg name="robot_description_path" default="$(find-pkg-share diff_drive)/urdf/ddrive.robot.xacro" description="Path to the robot's xacro file."/>
     <arg name="view_only" default="false" description="Set to true to only view the robot in Rviz."/>
 
     <node pkg="robot_state_publisher" exec="robot_state_publisher" name="rsp" >

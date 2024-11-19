@@ -19,13 +19,22 @@
             <wheel_radius>${wheel_radius}</wheel_radius>
             <odom_publish_frequency>50.0</odom_publish_frequency>
             <topic>/cmd_vel</topic>
-            <odom_topic>/odom</odom_topic>
-            <tf_topic>/tf</tf_topic>
+            <odom_topic>/diff_odom</odom_topic>
+            <tf_topic>/diff_tf</tf_topic>
             <frame_id>odom</frame_id>
             <child_frame_id>base_link</child_frame_id>
         </plugin>
 
-        <plugin name="gz::sim::systems::JointStatePublisher" filename="libgz-sim-joint-state-publisher-system.so">
+        <plugin name="gz::sim::systems::OdometryPublisher" filename="gz-sim-odometry-publisher-system">
+            <odom_frame>/world</odom_frame>
+            <robot_base_frame>/wheel_middle_link</robot_base_frame>
+            <odom_publish_frequency>50.0</odom_publish_frequency>
+            <odom_topic>/odom</odom_topic>
+            <tf_topic>/tf</tf_topic>
+            <frame_id>world</frame_id>
+        </plugin>
+
+        <plugin name="gz::sim::systems::JointStatePublisher" filename="gz-sim-joint-state-publisher-system">
             <topic>/joint_states</topic>
         </plugin>
     </gazebo>
