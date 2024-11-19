@@ -1,7 +1,8 @@
 """Setup file for a ROS 2 package."""
 
-import os
 from glob import glob
+
+import os
 
 from setuptools import find_packages, setup
 
